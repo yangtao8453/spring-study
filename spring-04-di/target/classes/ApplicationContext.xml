@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.yangtao.pojo.Address">
+        <property name="address" value="广东"/>
+    </bean>
+
+    <bean id="student" class="com.yangtao.pojo.Student">
+        <!-- 基本数据类型注入 -->
+        <property name="name" value="yangtao"/>
+        <!-- 引用类型注入 -->
+        <property name="address" ref="address"/>
+        <!-- 数组类型注入 -->
+        <property name="books">
+            <array>
+                <value>西游记</value>
+                <value>红楼梦</value>
+                <value>三国演义</value>
+                <value>水浒传</value>
+            </array>
+        </property>
+        <!-- List注入 -->
+        <property name="hobbys">
+            <list>
+                <value>冲浪</value>
+                <value>搞钱</value>
+            </list>
+        </property>
+        <!-- Map注入 -->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="123456666666666666"/>
+            </map>
+        </property>
+        <!-- Set注入 -->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>DNF</value>
+            </set>
+        </property>
+        <!-- null空指针注入，注意区别空值注入(value="") -->
+        <property name="wife">
+            <null/>
+        </property>
+        <!-- Properties注入 -->
+        <property name="info">
+            <props>
+                <prop key="学号">2021001</prop>
+                <prop key="密码">123123</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

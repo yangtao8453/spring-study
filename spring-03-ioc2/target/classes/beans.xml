@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        id：bean的唯一标识符，相当于对象名
+    -->
+    <bean id="user" class="com.yangtao.pojo.User">
+<!--        <property name="name" value="yangtao"/>-->
+<!--        <constructor-arg index="0" value="yangtao"/>-->
+<!--        <constructor-arg type="java.lang.String" value="yangtao"/>-->
+        <constructor-arg name="name" value="yangtao"/>
+    </bean>
+
+    <alias name="user" alias="userBean"/>
+
+</beans>

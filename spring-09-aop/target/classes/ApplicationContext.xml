@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="userService" class="com.yangtao.service.UserServiceImpl"/>
+    <bean id="log" class="com.yangtao.log.Log"/>
+    <bean id="afterLog" class="com.yangtao.log.AfterLog"/>
+
+    <!-- 1. 使用原生Spring API接口 -->
+    <!-- 配置AOP：需要导入AOP的约束 -->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash; 切入点：  execution(需要执行的位置 修饰词 返回值 列名 方法名 参数) &ndash;&gt;-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.yangtao.service.UserServiceImpl.*(..))"/>-->
+<!--        &lt;!&ndash; 执行环绕增加 &ndash;&gt;-->
+<!--        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>-->
+<!--        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>-->
+<!--    </aop:config>-->
+    
+    <!-- 2.自定义类实现AOP -->
+<!--    <bean id="diy" class="com.yangtao.diy.DiyPointCut"/>-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash; 自定义切面，ref引用类 &ndash;&gt;-->
+<!--        <aop:aspect ref="diy">-->
+<!--            &lt;!&ndash; 切入点 &ndash;&gt;-->
+<!--            <aop:pointcut id="point" expression="execution(* com.yangtao.service.UserServiceImpl.*(..))"/>-->
+<!--            &lt;!&ndash; 通知 &ndash;&gt;-->
+<!--            <aop:before method="before" pointcut-ref="point"/>-->
+<!--            <aop:after method="after" pointcut-ref="point"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+    <!-- 3. 使用注解实现AOP -->
+    <!-- 配置注解的支持 -->
+    <aop:aspectj-autoproxy />
+    <!-- 开启注解扫描 -->
+    <context:component-scan base-package="com.yangtao.*"/>
+
+</beans>
